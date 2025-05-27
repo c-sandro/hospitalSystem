@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Criar paciente</title>
+    <link rel="stylesheet" href="/api/v1/styles">
+</head>
+<body>
+    <div class="content">
+        <b class="titleText">HOSPITAL SANTO</b> <img class="crossTitle" src="/api/v1/images/cross.png" alt="">
+        <br><br>
+        <h2>ADICIONAR PACIENTE</h2>
+        <form action="" method="post">
+            <div class="name-getter">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" class="patientNameInput" required> <label class="redAsteriskText">*</label>
+            </div>
+            <br>
+            <div class="cpf-getter">
+                <label for="cpf">CPF (somente os números):</label>
+                <input type="text" id="cpf" name="cpf" class="patientCpfInput"
+                       maxlength="11" minlength="11" required> <label class="redAsteriskText">*</label>
+            </div>
+            <br>
+            <div class="birth_date-getter">
+                <label for="birth_date">Data de Nascimento:</label>
+                <input type="date" id="birth_date" name="birth_date" required> <label class="redAsteriskText">*</label>
+            </div>
+            <br>
+            <div class="options-getter">
+                <label for="sex">Género:</label>
+                <select id="sex" name="sex" required>
+                    <option value="0">Homem</option>
+                    <option value="1">Mulher</option>
+                </select> <label class="redAsteriskText">*</label> |
+                <label for="blood_type_id">Tipo Sanguíneo:</label>
+                <select id="blood_type_id" name="blood_type_id">
+                    <option value="">-</option>
+                    <option value="0">A+</option>
+                    <option value="1">A-</option>
+                    <option value="2">AB+</option>
+                    <option value="3">AB-</option>
+                    <option value="4">B+</option>
+                    <option value="5">B-</option>
+                    <option value="6">O+</option>
+                    <option value="7">O-</option>
+                </select>
+            </div>
+            <br>
+            <div class="phone-getter">
+                <label for="phone">Telefone (DDD incluso, somente os números):</label><br>
+                <input type="text" id="phone" name="phone" class="patientPhoneInput"
+                       maxlength="11" minlength="11" required> <label class="redAsteriskText">*</label>
+            </div>
+            <br>
+            <div class="address-getter">
+                <label for="address">Endereço:</label>
+                <input type="text" id="address" name="address" class="patientAddressInput" required> <label class="redAsteriskText">*</label>
+            </div>
+            <br>
+            <div class="email-getter">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" class="patientEmailInput">
+            </div>
+            <br>
+            <div class="allergies-getter">
+                <label for="allergies">Alergias:</label><br>
+                <textarea id="allergies" name="allergies" rows="3" cols="45"></textarea>
+            </div>
+            <br>
+            <label class="redAsteriskText">*</label> = Obrigatório |
+            <input type="submit" value="Confirmar">
+        </form>
+        <br>
+        <button onclick="window.location.href='/api/v1/menu'">Voltar</button>
+    </div>
+</body>
+</html>

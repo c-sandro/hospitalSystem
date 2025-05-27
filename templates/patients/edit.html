@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar paciente</title>
+    <link rel="stylesheet" href="/api/v1/styles">
+</head>
+<body>
+    <div class="content">
+        <b class="titleText">HOSPITAL SANTO</b> <img class="crossTitle" src="/api/v1/images/cross.png" alt="">
+        <br><br>
+        <h2>EDITAR PACIENTE</h2>
+        <form action="" method="post">
+            <div class="name-getter">
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" class="patientNameInput">
+            </div>
+            <br>
+            <div class="birth_date-getter">
+                <label for="birth_date">Data de Nascimento:</label>
+                <input type="date" id="birth_date" name="birth_date">
+            </div>
+            <br>
+            <div class="options-getter">
+                <label for="sex">Género:</label>
+                <select id="sex" name="sex">
+                    <option value="">-</option>
+                    <option value="0">Homem</option >
+                    <option value="1">Mulher</option>
+                </select> |
+                <label for="blood_type_id">Tipo Sanguíneo:</label>
+                <select id="blood_type_id" name="blood_type_id">
+                    <option value="">-</option>
+                    <option value="0">A+</option>
+                    <option value="1">A-</option>
+                    <option value="2">AB+</option>
+                    <option value="3">AB-</option>
+                    <option value="4">B+</option>
+                    <option value="5">B-</option>
+                    <option value="6">O+</option>
+                    <option value="7">O-</option>
+                </select>
+            </div>
+            <br>
+            <div class="phone-getter">
+                <label for="phone">Telefone (DDD incluso, somente números):</label>
+                <input type="text" id="phone" name="phone" maxlength="11" minlength="11" class="patientPhoneInput">
+            </div>
+            <br>
+            <div class="address-getter">
+                <label for="address">Endereço:</label>
+                <input type="text" id="address" name="address" class="patientAddressInput">
+            </div>
+            <br>
+            <div class="email-getter">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" class="patientEmailInput">
+            </div>
+            <br>
+            <div class="allergies-getter">
+                <label for="allergies">Alergias:</label><br>
+                <textarea id="allergies" name="allergies" rows="3" cols="45"></textarea>
+            </div>
+            <br>
+            <input type="submit" value="Confirmar">
+        </form>
+        <br>
+        <button onclick="history.back()">Cancelar</button>
+        <button onclick="window.location.href='/api/v1/menu'">Menu</button>
+    </div>
+</body>
+</html>

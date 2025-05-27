@@ -1,0 +1,53 @@
+body{
+    background: black;
+    color: white;
+}
+.content{
+    position: relative;
+    text-align: center;
+}
+.titleText{
+    font-size: 40px;
+    vertical-align: center;
+}
+.crossTitle{
+    position: relative;
+    width: 50px;
+    top: 15px;
+    left: 5px;
+}
+.patientNameInput{
+    width: 245px;
+}
+.patientCpfInput, .patientPhoneInput{
+    width: 85px;
+}
+.patientAddressInput{
+    width: 230px;
+}
+.patientEmailInput{
+    width: 260px;
+}
+
+.appointmentParamText{
+    width: 220px;
+}
+
+.appointmentResultContainer{
+    display: flex;
+}
+
+.appointmentResultChild{
+    flex: 1;
+}
+
+.searchResultDiv{
+    border: 2px solid #d1d1d1;
+    border-radius: 5px;
+    padding: 10px;
+    display: inline-block
+}
+
+.redAsteriskText{
+    color: red;
+}

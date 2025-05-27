@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Erro</title>
+    <link rel="stylesheet" href="/api/v1/styles">
+</head>
+<body onload="loadError()">
+    <div class="content">
+        <b class="titleText">HOSPITAL SANTO</b> <img class="crossTitle" src="/api/v1/images/cross.png" alt="">
+        <br><br>
+        <h2 id="error-code">ERRO DESCONHECIDO</h2>
+        <div id="error-description">Ocorreu um erro desconhecido</div>
+        <br>
+        <button onclick="history.back()">Retornar</button>
+        <button onclick="window.location.href='/api/v1/menu'">Menu</button>
+        <button onclick="window.location.href='/api/v1/login'">Tela de Login</button>
+    </div>
+</body>
+</html>
+<script>
+    function loadError(){
+        let urlQueries = window.location.href.split('?')[1];
+        let queriesArray = urlQueries.split('&');
+        let errorCodeValue = queriesArray[0].split('=');
+        let errorDescValue = queriesArray[1].split('=');
+        let errorDescConverted = decodeURI(errorDescValue[1]);
+
+        document.getElementById("error-code").innerText = "ERRO " + errorCodeValue[1];
+        document.getElementById("error-description").innerHTML = errorDescConverted;
+    }
+</script>

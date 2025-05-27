@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pesquisar doutor</title>
+    <link rel="stylesheet" href="/api/v1/styles">
+    <script src="/api/v1/js" defer></script>
+</head>
+<body>
+    <div class="content">
+        <b class="titleText">HOSPITAL SANTO</b> <img class="crossTitle" src="/api/v1/images/cross.png" alt="">
+        <br><br>
+        <h2>PESQUISAR DOUTOR</h2>
+        <form action="" method="post">
+            <div class="options-getter">
+                <label for="options">Campo de busca: </label>
+                <select onfocusout="doctors_update_input()" id="options" name="options" required>
+                    <option value="0">Nome</option>
+                    <option value="1">CPF</option>
+                    <option value="2">CRM</option>
+                    <option value="3">ID</option>
+                </select> <label class="redAsteriskText">*</label>
+            </div>
+            <br>
+            <div class="param-getter">
+                <label for="param">Parametro:</label>
+                <input type="text" id="param" name="param" required> <label class="redAsteriskText">*</label>
+            </div>
+            <br>
+            <label class="redAsteriskText">*</label> = Obrigatório |
+            <input type="submit" value="Confirmar">
+        </form>
+        <br>
+        <button onclick="window.location.href='/api/v1/menu'">Voltar</button>
+    </div>
+</body>
+</html>

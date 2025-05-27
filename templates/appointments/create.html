@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Criar paciente</title>
+    <link rel="stylesheet" href="/api/v1/styles">
+</head>
+<body>
+    <div class="content">
+        <b class="titleText">HOSPITAL SANTO</b> <img class="crossTitle" src="/api/v1/images/cross.png" alt="">
+        <br><br>
+        <h2>AGENDAR CONSULTA</h2>
+        <form action="" method="post">
+            <div class="patient_options-getter">
+                <label for="patient_options">Campo de busca do paciente: </label>
+                <select onfocusout="update_input()" id="patient_options" name="patient_options" required>
+                    <option value="0">Nome</option>
+                    <option value="1">CPF</option>
+                </select> <label class="redAsteriskText">*</label>
+            </div>
+            <br>
+            <div class="patient_param-getter">
+                <label for="patient_param">Parametro:</label>
+                <input type="text" id="patient_param" name="patient_param"
+                       class="appointmentParamText" required> <label class="redAsteriskText">*</label>
+            </div>
+            <br>
+            <div class="doctor_id-getter">
+                <label for="doctor_name">Nome do Doutor:</label>
+                <input type="text" id="doctor_name" name="doctor_name" required> <label class="redAsteriskText">*</label>
+            </div>
+            <br>
+            <label class="redAsteriskText">*</label> = Obrigatório |
+            <input type="submit" value="Confirmar">
+        </form>
+        <br>
+        <button onclick="window.location.href='/api/v1/menu'">Voltar</button>
+    </div>
+</body>
+</html>
+<script>
+    function update_input(){
+        const paramObj = document.getElementById("param");
+        let optionsValue = document.getElementById("options").value;
+
+        switch(optionsValue){
+            case '0':
+                paramObj.minLength = 0;
+                paramObj.maxLength = 256;
+                break;
+            case '1':
+                paramObj.minLength = 11;
+                paramObj.maxLength = 11;
+                break;
+        }
+    }
+</script>

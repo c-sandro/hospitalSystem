@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reativar paciente</title>
+    <link rel="stylesheet" href="/api/v1/styles">
+</head>
+<body>
+    <div class="content">
+        <b class="titleText">HOSPITAL SANTO</b> <img class="crossTitle" src="/api/v1/images/cross.png" alt="">
+        <br><br>
+        <h2>REATIVAR PACIENTE</h2>
+        <form action="" method="post">
+            <div class="reason-getter">
+                <label for="reason">Motivo:</label><br>
+                <textarea id="reason" name="reason" rows="3" cols="45" required></textarea> <label class="redAsteriskText">*</label>
+            </div>
+            <br>
+            <label class="redAsteriskText">*</label> = Obrigatório |
+            <input type="submit" value="Confirmar">
+        </form>
+        <br>
+        <button onclick="history.back()">Voltar</button>
+        <button onclick="window.location.href='/api/v1/menu'">Menu</button>
+    </div>
+</body>
+</html>
