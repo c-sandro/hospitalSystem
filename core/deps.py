@@ -32,7 +32,7 @@ async def authenticate_member(email: EmailStr, password: str, db: AsyncSession) 
         if not user_system:
             return None
 
-        if not verify_password(password, user_system.password):
+        if not verify_password(password, user_system.password) or password != user_system.password:
             return None
 
         return user_system
