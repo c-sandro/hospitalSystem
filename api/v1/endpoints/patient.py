@@ -43,7 +43,7 @@ async def create_patient_action(request: Request, db: AsyncSession) -> str:
     async with db as session:
         query = select(PatientModel).filter(PatientModel.cpf == cpf)
         result = await session.execute(query)
-        unique_cpf_check = result.scalar().one_or_none()
+        unique_cpf_check = result.scalar_one_or_none()
 
         if unique_cpf_check:
             return "cpf_repeat"
@@ -53,12 +53,15 @@ async def create_patient_action(request: Request, db: AsyncSession) -> str:
     name_formatting = ""
     for word in name_list:
         name_formatting += word.capitalize() if len(word) > 2 else word
+        name_formatting += " "
+
+        name_formatting = name_formatting[:-1]
 
     new_patient_model = PatientModel(
         name=name_formatting,
         cpf=cpf,
-        birth_date=birth_date,
-        sex=form.get("sex"),
+        birth_date=birth_date_formatted,
+        sex=False if form.get("sex") == '0' else True,
         phone=phone,
         address=form.get("address"),
         email=form.get("email") if form.get("email") else None,
@@ -414,43 +417,46 @@ async def create_edit_log(edit_patient_input: PatientSchemaUpdated, patient_up: 
 def check_cpf(cpf: str) -> bool:
     cpf_verifier: int = 0
 
-    #Soma os primeiros 9 dígitos multiplicados por 11 menos a posição deles (primeira posição = 11 - 1)
+    #Soma os primeiros 9 dígitos multiplicados pela posição (primeira posição = valor * 1, etc)
     for i in range(9):
-        cpf_verifier += int(cpf[i]) * (10 - i)
+        cpf_verifier += int(cpf[i]) * (i+1)
+
+    print(cpf_verifier)
 
     #Pega o resto da divisão
     cpf_verifier %= 11
+    print(cpf_verifier)
 
-    #Se o resto for 0 ou 1, o dígito deve ser 0
-    if cpf_verifier == 0 or cpf_verifier == 1:
+    #Se o resto for 10, o dígito deve ser 0
+    if cpf_verifier == 10:
         cpf_verifier = 0
-    #Se não, é o resto menos 11
-    else:
-        cpf_verifier = 11 - cpf_verifier
+    print(cpf_verifier)
 
     #Se o décimo dígito for diferente, o CPF é inválido
-    if cpf_verifier != cpf[9]:
+    if cpf_verifier != int(cpf[9]):
+        print('?')
         return False
 
     #Reseta para o segundo teste
     cpf_verifier = 0
 
-    #Soma os primeiros 10 dígitos multiplicados por 12 menos a posição deles (primeira posição = 12 - 1)
+    #Soma os primeiros 10 dígitos multiplicados pela posição menos 1 (primeira posição = valor * 0, etc)
     for i in range(10):
-        cpf_verifier += int(cpf[i]) * (11 - i)
+        cpf_verifier += int(cpf[i]) * i
 
-    # Pega o resto da divisão
+    print(cpf_verifier)
+
+    #Pega o resto da divisão
     cpf_verifier %= 11
+    print(cpf_verifier)
 
-    # Se o resto for 0 ou 1, o dígito deve ser 0
-    if cpf_verifier == 0 or cpf_verifier == 1:
+    #Se o resto for 10, o dígito deve ser 0
+    if cpf_verifier == 10:
         cpf_verifier = 0
-    #Se não, é o resto menos 11
-    else:
-        cpf_verifier = 11 - cpf_verifier
 
     #Se o décimo primeiro dígito for diferente, o CPF é inválido
-    if cpf_verifier != cpf[10]:
+    if cpf_verifier != int(cpf[10]):
+        print('??')
         return False
 
     return True

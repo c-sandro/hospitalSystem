@@ -60,7 +60,7 @@ async def search_user_action(request: Request, db: AsyncSession):
             <b>Usuário N°{user.id}</b>
             <div>Email: {user.email}</div>
             <div>Tier de Permissão: {user.permission_tier}</div>
-        </div>"""
+        </div><br>"""
 
         counter += 1
         if counter % 3 == 0:
